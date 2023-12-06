@@ -1,0 +1,26 @@
+{
+  "name": "be-2bandung-main",
+  "version": "1.0.0",
+  "description": "capstone projek grup 17",
+  "main": "index.js",
+  "devDependencies": {
+    "prisma": "^5.6.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "keywords": [
+    "express",
+    "prisma",
+    "mysql"
+  ],
+  "author": "Diah Ayu Anggraeni",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2"
+  }
+}
