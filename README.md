@@ -9,5 +9,5 @@ instal prisma "npm i -D prisma"
 inisiasi prisma "prisma init"
 npx prisma init --datasource-provider mysql
 npx prisma migrate dev --name
-DATABASES_URL : http://localhost:4000/Catalogs
-DATABASES_URL : http://localhost:4000/product
+DATABASE_URL : http://localhost:4000/Catalogs
+DATABASE_URL : http://localhost:4000/product

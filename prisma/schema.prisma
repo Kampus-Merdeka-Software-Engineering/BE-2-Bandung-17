@@ -13,9 +13,16 @@ model catalog {
 }
 
 model product {
-  id        Int     @id @default(autoincrement())
-  name      String  @db.VarChar(255)
-  price     Int?
-  imageUrl  String? @db.VarChar(255)
-  catalogId Int?
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(255)
+  price       Int?
+  imageUrl    String?
+  catalogId   Int?
+  description String  @db.Text
+}
+
+model contact {
+  name    String @unique @db.VarChar(255)
+  address String @db.VarChar(255)
+  message String @db.Text
 }

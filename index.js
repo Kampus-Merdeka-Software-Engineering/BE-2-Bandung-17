@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const { catalogRoutes } = require("./routes/catalog.routes");
+const { catalogRoutes } = require(`./routes/catalog.routes`);
 const { productRoutes } = require('./routes/product.routes');
+const { contactRoutes } = require(`./routes/contact.routes`);
 const app = express();
 const PORT = process.env.PORT || 4000;
 
@@ -16,6 +17,7 @@ app.get("/", async (req, res) => {
 
 app.use("/catalogs", catalogRoutes);
 app.use("/product", productRoutes);
+app.use("/contact", contactRoutes);
 
 
 

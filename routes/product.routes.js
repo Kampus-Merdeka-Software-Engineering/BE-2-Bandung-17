@@ -4,9 +4,7 @@ const { prisma } = require("../config/prisma");
 
 productRoutes.get("/", async (req, res) => {
     const product = await prisma.product.findMany({
-        include: {
-            Catalog: true,
-        }
+        
     });
     res.status(200).send(product);
 });
@@ -21,8 +19,8 @@ productRoutes.get("/:id", async (req, res) => {
 });
 
 productRoutes.post("/", async (req, res) => {
-    const { name, price, imageUrl, catalogId } = req.body;
-    if (!name || !price || !imageUrl || !catalogId) {
+    const { name, price, imageUrl, catalogId, description } = req.body;
+    if (!name || !price || !imageUrl || !catalogId || !description) {
         res.status(400).json({ message: `name is required` });
         return;
     }
@@ -34,6 +32,7 @@ productRoutes.post("/", async (req, res) => {
             price: priceValue,
             imageUrl: imageUrl,
             catalogId: catalogIdValue,
+            description: description
         },
     });
     res.status(201).json({
