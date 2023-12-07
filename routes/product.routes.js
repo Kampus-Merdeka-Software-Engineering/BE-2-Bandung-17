@@ -4,7 +4,7 @@ const { prisma } = require("../config/prisma");
 
 productRoutes.get("/", async (req, res) => {
     const product = await prisma.product.findMany({
-        
+
     });
     res.status(200).send(product);
 });
