@@ -9,13 +9,14 @@ productRoutes.get("/", async (req, res) => {
     res.status(200).send(product);
 });
 
-productRoutes.get("/:id", async (req, res) => {
-    const product = await prisma.product.findUnique({
-        where: {
-            id: parseInt(req.params.id),
-        },
-    });
-    res.status(200).send(product);
+productRoutes.get("/:catalogId", async (req, res) => {
+	const { catalogId } = req.params;
+	const products = await prisma.product.findMany({
+		where: {
+			catalogId: parseInt(catalogId),
+		},
+	});
+	res.status(200).send(products);
 });
 
 productRoutes.post("/", async (req, res) => {
