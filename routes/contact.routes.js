@@ -18,4 +18,9 @@ contactRoutes.post("/", async (req, res) => {
     }
   });
 
+  contactRoutes.get("/", async (req, res) => {
+    const contact = await prisma.contact.findMany();
+    res.status(200).send(contact);
+});
+
 module.exports = { contactRoutes };
