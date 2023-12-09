@@ -18,7 +18,8 @@ catalogRoutes.get("/:id", async (req, res) => {
 
 catalogRoutes.post("/", async (req, res) => {
     const { name } = req.body;
-    if (!name) res.status(400).json({ message: `name is required` });
+    // if (!name) res.status(400).json({ message: `name is required` });
+   try{
     const newCatalog = await prisma.catalog.create({
         data: {
             name: name,
@@ -28,6 +29,9 @@ catalogRoutes.post("/", async (req, res) => {
         message: `catalog created`,
         data: newCatalog,
     });
+} catch (error) {
+    console.error(`error create catalog`);
+    res.status()
+}
 });
-
 module.exports = { catalogRoutes };
