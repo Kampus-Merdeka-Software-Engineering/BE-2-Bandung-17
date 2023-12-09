@@ -2,18 +2,18 @@ const express = require('express');
 const productRoutes = express.Router();
 const { prisma } = require("../config/prisma");
 
-productRoutes.get("/", async (req, res) => {
-    const product = await prisma.product.findMany({
-
-    });
-    res.status(200).send(product);
-});
-
 productRoutes.get("/:id", async (req, res) => {
     const product = await prisma.product.findUnique({
         where: {
             id: parseInt(req.params.id),
         },
+    });
+    res.status(200).send(product);
+});
+
+productRoutes.get("/", async (req, res) => {
+    const product = await prisma.product.findMany({
+
     });
     res.status(200).send(product);
 });
