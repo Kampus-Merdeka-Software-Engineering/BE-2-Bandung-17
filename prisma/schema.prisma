@@ -8,8 +8,8 @@ datasource db {
 }
 
 model Catalog {
-  id       Int      @id @default(autoincrement())
-  name     String   @db.VarChar(255)
+  id       Int       @id @default(autoincrement())
+  name     String    @db.VarChar(255)
   products Product[]
 }
 
@@ -17,14 +17,15 @@ model Product {
   id          Int      @id @default(autoincrement())
   name        String   @db.VarChar(255)
   price       Int?
-  imageUrl    String? @db.Text
+  imageUrl    String?  @db.Text
   catalogId   Int?
   description String   @db.Text
   catalog     Catalog? @relation(fields: [catalogId], references: [id])
 }
 
-model contact {
-  name    String @unique @db.VarChar(255)
+model Contact {
+  id      Int    @id @default(autoincrement())
+  name    String @db.VarChar(255)
   address String @db.VarChar(255)
   message String @db.Text
 }
