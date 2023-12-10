@@ -9,7 +9,7 @@ contactRoutes.post("/", async (req, res) => {
       });
    
       res.status(201).json({
-        message: "Message created",
+        contact: "contact created",
         data: newContact,
       });
     } catch (error) {
@@ -19,8 +19,12 @@ contactRoutes.post("/", async (req, res) => {
   });
 
   contactRoutes.get("/", async (req, res) => {
-    const contact = await prisma.contact.findMany();
-    res.status(200).send(contact);
-});
-
+    try {
+      const contacts = await prisma.contact.findMany();
+      res.status(200).json(contacts);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  });
 module.exports = { contactRoutes };
