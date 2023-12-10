@@ -1,27 +1,32 @@
 const express = require('express');
 const contactRoutes = express.Router();
-const { prisma } = require("../config/prisma")
+const { prisma } = require("../config/prisma");
 
 contactRoutes.post("/", async (req, res) => {
   const { name, address, message } = req.body;
-  // if (!name || !address || !message) res.status(400).json({ message: `name is required` });
- try{
-  const newContact = await prisma.contact.create({
+
+  try {
+    const newContact = await prisma.contact.create({
       data: {
-          name: name,
-          address: address,
-          message: message
+        name: name,
+        address: address,
+        message: message
       },
-  });
-  res.status(201).json({
-      message: `contact created`,
+    });
+
+    res.status(201).json({
+      message: `kontak dibuat`,
       data: newContact,
-  });
-} catch (error) {
-  console.log(`error create contact`);
-  console.log(error);
-  res.status()
-}
+    });
+  } catch (error) {
+    console.log(`error membuat kontak`);
+    console.log(error);
+
+    res.status(500).json({
+      message: `Error membuat kontak`,
+      error: error.message,
+    });
+  }
 });
 
   contactRoutes.get("/", async (req, res) => {
