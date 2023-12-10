@@ -3,20 +3,25 @@ const contactRoutes = express.Router();
 const { prisma } = require("../config/prisma")
 
 contactRoutes.post("/", async (req, res) => {
-    try {
-      const newContact = await prisma.contact.create({
-        data: req.body,
-      });
-   
-      res.status(201).json({
-        contact: "contact created",
-        data: newContact,
-      });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
+  const { name } = req.body;
+  // if (!name || !address || !message) res.status(400).json({ message: `name is required` });
+ try{
+  const newContact = await prisma.contact.create({
+      data: {
+          name: name,
+          address: addressValues,
+          message: message
+      },
   });
+  res.status(201).json({
+      message: `contact created`,
+      data: newContact,
+  });
+} catch (error) {
+  console.error(`error create contact`);
+  res.status()
+}
+});
 
   contactRoutes.get("/", async (req, res) => {
     try {
