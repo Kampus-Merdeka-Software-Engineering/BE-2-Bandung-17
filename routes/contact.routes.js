@@ -3,13 +3,13 @@ const contactRoutes = express.Router();
 const { prisma } = require("../config/prisma")
 
 contactRoutes.post("/", async (req, res) => {
-  const { name } = req.body;
+  const { name, address, message } = req.body;
   // if (!name || !address || !message) res.status(400).json({ message: `name is required` });
  try{
   const newContact = await prisma.contact.create({
       data: {
           name: name,
-          address: addressValues,
+          address: address,
           message: message
       },
   });
