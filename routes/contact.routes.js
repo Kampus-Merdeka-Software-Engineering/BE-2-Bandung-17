@@ -18,7 +18,7 @@ contactRoutes.post("/", async (req, res) => {
       data: newContact,
   });
 } catch (error) {
-  console.error(`error create contact`);
+  console.log(`error create contact`);
   res.status()
 }
 });
