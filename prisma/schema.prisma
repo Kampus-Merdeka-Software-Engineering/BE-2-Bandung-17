@@ -17,7 +17,7 @@ model Product {
   id          Int      @id @default(autoincrement())
   name        String   @db.VarChar(255)
   price       Int?
-  imageUrl    String?
+  imageUrl    String? @db.Text
   catalogId   Int?
   description String   @db.Text
   catalog     Catalog? @relation(fields: [catalogId], references: [id])
